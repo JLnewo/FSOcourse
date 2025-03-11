@@ -5,7 +5,12 @@ const StatisticLine =(props)=>{
 const text = props.text
 const value = props.value
   return(
-    <p> {text} {value}</p>
+    <table>
+      <tr>
+        <td> {text} </td>
+        <td> {value} </td>
+      </tr>
+    </table>
 
   )
 }
@@ -20,9 +25,19 @@ const Statistics =(props) => {
       <StatisticLine text="bad" value ={bad} />
       <StatisticLine text="all" value ={all} />
 
+    <table>
+      <tr><td>
+      average {all>0 ? ((good+(bad*-1))/all):0}
+      </td></tr>
+      
+      <tr><td>
+      positive {all >0 ? (good/all)*100 : 0} %
+      </td></tr>
+      
 
-    <p>average {all>0 ? ((good+(bad*-1))/all):0}</p>
-    <p>positive {all >0 ? (good/all)*100 : 0} %</p>
+    </table>
+    
+    
     </div>
   )
 }
