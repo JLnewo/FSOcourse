@@ -12,6 +12,14 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ]
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState (new Array(anecdotes.length).fill(0))
+    
+  const vote =()=>{
+      const newVotes = [...votes]; // Hacer una copia del array
+      newVotes[selected] += 1; // Modificar la copia
+      setVotes(newVotes); // Actualizar el estado
+      
+    }
 
   const nextAnec =()=>{    
       setSelected( getRandomInt(8))
@@ -22,12 +30,14 @@ const App = () => {
     return Math.floor(Math.random() * max);
   }
 
-  
+
 
   return (
     <div>
       {anecdotes[selected]}
       <p></p>
+      <p>has {votes[selected]} votes</p>
+      <button  onClick={vote}> vote </button>
       <button onClick={nextAnec}>next anecdote </button>
       
     </div>
