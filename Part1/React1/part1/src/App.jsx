@@ -6,10 +6,12 @@ const text = props.text
 const value = props.value
   return(
     <table>
+      <tbody>
       <tr>
         <td> {text} </td>
         <td> {value} </td>
       </tr>
+      </tbody>
     </table>
 
   )
@@ -18,24 +20,26 @@ const Statistics =(props) => {
   const {good, neutral, bad, all } =props
   return(
     <div>
-      <text style={{fontSize:20,fontWeight:'bold'}}>statistics</text>
       
+      
+      <p style={{fontSize:20,fontWeight:'bold'}}>statistics</p> 
+          
       <StatisticLine text="good" value ={good} />
       <StatisticLine text="neutral" value ={neutral} />
       <StatisticLine text="bad" value ={bad} />
       <StatisticLine text="all" value ={all} />
 
-    <table>
-      <tr><td>
+     <table>
+     <tbody>
+     <tr><td>
       average {all>0 ? ((good+(bad*-1))/all):0}
       </td></tr>
       
       <tr><td>
       positive {all >0 ? (good/all)*100 : 0} %
       </td></tr>
-      
-
-    </table>
+     </tbody>
+      </table> 
     
     
     </div>
@@ -68,7 +72,7 @@ const App = () => {
 
   return (
     <div>
-      <text style={{fontSize:20,fontWeight:'bold'}}>give feedback</text>
+      <p style={{fontSize:20,fontWeight:'bold'}}>give feedback</p>
       <p></p>
       <button onClick={handleGood}>Good</button>
       <button onClick={handleNeutral}>Neutral</button>
