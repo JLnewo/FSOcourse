@@ -1,17 +1,26 @@
 import { useState } from 'react'
 
+
+const StatisticLine =(props)=>{
+const text = props.text
+const value = props.value
+  return(
+    <p> {text} {value}</p>
+
+  )
+}
 const Statistics =(props) => {
-  const good =props.good
-  const neutral= props.neutral
-  const bad = props.bad
-  const all = props.all
+  const {good, neutral, bad, all } =props
   return(
     <div>
       <text style={{fontSize:20,fontWeight:'bold'}}>statistics</text>
-    <p>Good {good}</p>
-    <p>Neutral {neutral}</p>
-    <p>Bad {bad}</p>
-    <p>all {all}</p>
+      
+      <StatisticLine text="good" value ={good} />
+      <StatisticLine text="neutral" value ={neutral} />
+      <StatisticLine text="bad" value ={bad} />
+      <StatisticLine text="all" value ={all} />
+
+
     <p>average {all>0 ? ((good+(bad*-1))/all):0}</p>
     <p>positive {all >0 ? (good/all)*100 : 0} %</p>
     </div>
