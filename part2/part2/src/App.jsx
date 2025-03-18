@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState} from 'react'
 import Name from './componets/Name'
 
 const App = () => {
@@ -15,14 +15,23 @@ const App = () => {
       name : newName,
       id : persons.length + 1    
     }
-    setPersons(persons.concat(nameObj))
-    setNewName('')
-  }
+   duplicate(nameObj)
+    }
+    
 
   const handleNoteChange = (event) => {    
     setNewName(event.target.value)
   }
+  const duplicate = (data)=>{
+    if (!persons.some(e=>e.name === data.name)){
+      setPersons(persons.concat(data))
+      setNewName('')
+    } else {
+      alert(data.name + ' is already added to phonebook')
+      setNewName('')
+    }
 
+  }
 
   return (
     <div>
